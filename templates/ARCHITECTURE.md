@@ -1,10 +1,16 @@
 # ARCHITECTURE.md Template
 
+This template belongs to the starter kit of this publish repo. Its job is to help you define the structure abstraction layer of your repository, so source-of-truth and lifecycle questions do not get overloaded into `README.md`.
+
 ## Design Goals
 
 - Use `ARCHITECTURE.md` as the repository's structure abstraction layer.
 - Explain partitioning, lifecycle, and source-of-truth boundaries.
 - Avoid rewriting `README.md` or embedding detailed workflow instructions.
+
+## Copy This As
+
+`ARCHITECTURE.md`
 
 ## Template
 

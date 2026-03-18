@@ -1,10 +1,16 @@
-# README.md Template
+# Root README Template
+
+This template belongs to the starter kit of this publish repo. Its job is to help you build the overview layer of your own agent-friendly repository without copying the whole `myBrainFood` workspace.
 
 ## Design Goals
 
 - Use root `README.md` for overview and first-pass navigation.
 - Explain the main directory roles without turning the file into a full architecture manual.
 - Keep structure abstraction in `ARCHITECTURE.md`, not here.
+
+## Copy This As
+
+`README.md`
 
 ## Template
 

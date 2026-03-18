@@ -1,10 +1,16 @@
 # AGENTS.md Template
 
+This template belongs to the starter kit of this publish repo. Its job is to help you create a root `AGENTS.md` that acts as a navigation map for humans and coding agents entering your repository.
+
 ## Design Goals
 
 - Use root `AGENTS.md` as a navigation map, not an encyclopedia.
 - Help an agent answer: what is this repo, what should I read first, and where should I go next.
 - Keep workflow details in `docs/` or local guides instead of expanding root instructions indefinitely.
+
+## Copy This As
+
+`AGENTS.md`
 
 ## Template
 

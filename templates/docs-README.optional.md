@@ -1,10 +1,12 @@
-# docs/README.md Template
+# docs/README.md Optional Template
 
-## Design Goals
+## Copy This As
 
-- Explain what belongs in `docs/`.
-- Keep `docs/README.md` focused on the directory itself, not the whole repo.
-- Treat `docs/` as stable, reusable, repository-level knowledge.
+`docs/README.md`
+
+## When To Use
+
+Use this only when your repository has started accumulating stable workflows, methods, operating rules, or repository-level guidance that should live outside a single task or feature area.
 
 ## Template
 
