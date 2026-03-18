@@ -250,3 +250,14 @@ It is this:
 - useful templates should be explainable by the real workspace conditions that produced them
 
 First comes the real example, then the starter kit. That is the core design of this publish repo.
+
+## Inspiration
+
+The direction of this guide and starter kit was inspired by OpenAI's article `Harness engineering: leveraging Codex in an agent-first world`.
+
+The core idea borrowed here is simple: treat `AGENTS.md` as a map rather than an encyclopedia, and let structured repository knowledge become the actual system of record.
+
+Original source:
+
+- OpenAI, `Harness engineering: leveraging Codex in an agent-first world`
+  https://openai.com/index/harness-engineering/

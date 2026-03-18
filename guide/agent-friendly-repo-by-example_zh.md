@@ -248,3 +248,14 @@
 - 真正有用的模板，應該能回到真實 workspace 中解釋自己為什麼存在
 
 先有真實案例，再有 starter kit；這就是這個 publish repo 的核心設計。
+
+## 靈感來源
+
+這份 guide 與 starter kit 的方向，受到 OpenAI 文章 `Harness engineering: leveraging Codex in an agent-first world` 的啟發。
+
+這裡借用的核心概念很簡單：把 `AGENTS.md` 視為 map，而不是 encyclopedia，並讓結構化的 repository knowledge 成為真正的 system of record。
+
+官方原始連結：
+
+- OpenAI, `Harness engineering: leveraging Codex in an agent-first world`
+  https://openai.com/index/harness-engineering/
