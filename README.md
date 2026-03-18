@@ -22,7 +22,7 @@ This repository is designed for two kinds of readers:
 
 If you want to understand the design:
 
-1. Read `guide/agent-friendly-repo-by-example.md` for the Chinese guide, or `guide/agent-friendly-repo-by-example.en.md` for the English guide
+1. Read `guide/agent-friendly-repo-by-example.md` for the English guide, or `guide/agent-friendly-repo-by-example_zh.md` for the Chinese guide
 2. Understand why `README.md`, `AGENTS.md`, and `ARCHITECTURE.md` are separate
 3. Then inspect the files in `templates/`
 
@@ -35,7 +35,7 @@ If you want to start building right away:
 
 ## 5-Minute Setup
 
-1. Read `guide/agent-friendly-repo-by-example.md` once.
+1. Read `guide/agent-friendly-repo-by-example.md` once, or use `guide/agent-friendly-repo-by-example_zh.md` if you prefer Chinese.
 2. Copy these files into your repository root:
    `templates/ROOT-README.md`
    `templates/AGENTS.md`

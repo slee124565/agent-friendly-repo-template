@@ -2,58 +2,58 @@
 
 `A publishable walkthrough based on my real workspace, myBrainFood.`
 
-這份文件不是模板，而是一份公開版案例導讀。
+This file is not a template. It is a public-facing case-study guide.
 
-如果你是第一次接觸 agent-friendly repo，建議不要先急著讀 `templates/`。先看這份 guide，理解 `myBrainFood` 怎麼把真實工作流拆成入口文件、結構抽象層、local guides 與實際內容區；之後再回頭看 starter kit，你會更容易知道每份文件為什麼要這樣設計。
+If you are new to the idea of an agent-friendly repository, do not start with `templates/` first. Start here. This guide explains how `myBrainFood` split entry files, structure abstraction, local guides, and actual content areas. After that, the starter kit will make much more sense.
 
-對外部讀者來說，這是一份案例導讀。
+For external readers, this is a walkthrough by example.
 
-對想打造自己 repo 的新手來說，這也是一份「先理解，再動手」的橋接文件。
+For beginners who want to build their own repo, this is also a bridge between understanding the design and actually starting.
 
-這份 guide 服務兩種讀者：
+This guide serves two kinds of readers:
 
-- 想理解 agent-friendly repo 為什麼需要這樣分工的人
-- 想從真實案例出發，再打造自己簡易版 repo 的新手
+- people who want to understand why an agent-friendly repo needs this kind of role separation
+- beginners who want to start from a real workspace example and then build a simpler version of their own
 
-閱讀時也先記得一點：這裡出現的目錄名稱，例如 `_ideas/`、`_todos/`、`archive/`、`docs/`、`prompts/`，都是 `myBrainFood` 的實際命名，用來幫助你理解結構角色；它們不是硬性規格。若你要在自己的 repo 採用這套設計，可以依團隊語言、工作流與既有慣例，自行調整名稱，只要底層角色分工仍然清楚即可。
+One important note before reading further: directory names such as `_ideas/`, `_todos/`, `archive/`, `docs/`, and `prompts/` are the actual names used inside `myBrainFood`. They are helpful for understanding structural roles, but they are not mandatory template names. If you adopt this pattern in your own repository, you should rename things to match your own language, workflow, and conventions, as long as the underlying responsibilities remain clear.
 
-## 先看哪四份 root 文件
+## Start With Four Root Files
 
-在 `myBrainFood` 裡，root 層目前拆成四種不同角色：
+In `myBrainFood`, the root layer is split into four different roles:
 
 - `README.md`
-  給人與 agent 的 repo overview，回答這個 workspace 大致有哪些區塊
+  The overview file for humans and agents. It answers what the workspace broadly contains.
 - `AGENTS.md`
-  給 agent 的入口檔，回答先讀哪裡、遇到哪類任務去哪裡找規則
+  The entry file for agents. It answers what to read first and where to find rules for different kinds of work.
 - `ARCHITECTURE.md`
-  給結構判斷使用，回答內容怎麼流轉、哪裡是 source-of-truth、什麼該升格
+  The structure abstraction file. It answers how content moves, which areas are the current source of truth, and what should be promoted.
 - `docs/README.md`
-  給 `docs/` 自己使用，回答什麼該進 `docs/`
+  The local guide for `docs/`. It answers what should go into `docs/`.
 
-這四份文件共同構成這個 publish repo 的理解起點。也就是說，這組 starter templates 不是先從抽象欄位長出來，而是先從這四種真實分工倒推出來的。
+These four files form the starting point for understanding this publish repo. In other words, the starter templates did not come from abstract placeholders first. They were derived from four real responsibilities that already existed in a working workspace.
 
-這也是這個案例最想分享的核心經驗：當 repo 同時承接工作流、研究、輸出與 agent 協作時，單一 root README 很快就會超載。
+That is also the main lesson this case study wants to share: once a repo starts carrying workflows, research, outputs, and agent collaboration at the same time, a single root README becomes overloaded very quickly.
 
-## `myBrainFood` 的真實分區長什麼樣
+## What The Real Partitioning Of `myBrainFood` Looks Like
 
-如果把 `myBrainFood` 當成一個工作系統，而不是檔案倉庫，幾個高頻區塊很容易看出不同角色：
+If you think of `myBrainFood` as a working system rather than a file bucket, several high-frequency areas reveal different roles:
 
 - `_ideas/`
-  接住還在定義問題、整理假設、還沒決定是否要長期追蹤的主題
+  Captures topics that are still defining the problem or shaping the hypothesis
 - `_todos/`
-  承接 active context，也就是目前正在推進的任務、研究與規劃
+  Holds active context: tasks, research, and planning that are currently in progress
 - `archive/`
-  保存已完成、已退役但仍值得回看的歷史任務
+  Preserves completed or retired work that is still worth revisiting
 - `docs/`
-  沉澱穩定規則、方法論與 workflow
+  Stores stable rules, methods, and workflows
 - `prompts/`
-  保存可跨任務重用的 prompt
+  Stores prompts that can be reused across tasks
 - `tools/`
-  保存可執行工具
+  Stores executable tools
 - `publishes/`
-  保存已發表專案的 subtree 鏡像與索引，不預設是 active workspace 的 source-of-truth
+  Stores subtree mirrors and indexes of published projects; it is not the default active source of truth
 
-這就是這套設計反覆出現幾個概念的來源：
+This is where recurring concepts in the design actually come from:
 
 - workflow state
 - active context vs historical context
@@ -61,165 +61,165 @@
 - stable docs
 - external sync boundary
 
-它們不是理論先行，而是為了解釋這些真實目錄長期共存時的不同角色。
+These are not theory-first abstractions. They are ways of describing the different roles that real directories play over time.
 
-## 一個最重要的結構判斷：active context 與 historical context
+## The Most Important Structural Distinction: Active Context vs Historical Context
 
-`myBrainFood` 最核心的結構判斷，不是副檔名，也不是內容主題，而是內容目前處在哪個工作狀態。
+The most important structural judgment in `myBrainFood` is not file extension and not content topic. It is the current work state of the content.
 
-最典型的例子就是：
+The clearest example is:
 
-- `_todos/` 是 active context
-- `archive/` 是 historical context
+- `_todos/` is active context
+- `archive/` is historical context
 
-這個判斷不是口號，而是直接影響接手與 re-entry 的真實閱讀順序。若你要知道「現在正在做什麼」，應該先看 active context，而不是先翻 archive 或執行產物。
+This distinction is not just a slogan. It directly affects how handoff and re-entry work. If you need to know what is happening now, you should start from active context, not from archive or execution artifacts.
 
-這也是為什麼一個 agent-friendly repo 不只是把檔案分類好，而是要讓 source-of-truth 順序可預測。
+That is why an agent-friendly repo is not just about grouping files neatly. It is about making the order of source-of-truth discovery predictable.
 
-## 為什麼需要 `ARCHITECTURE.md`
+## Why `ARCHITECTURE.md` Matters
 
-只靠 `README.md`，你通常能知道 repo 有哪些區塊；但你不一定能判斷：
+`README.md` can usually tell you what areas exist. But it often cannot answer questions like:
 
-- 一份內容應該放 `_ideas/` 還是 `_todos/`
-- 一份 task 結果什麼時候該沉澱到 `docs/`
-- `prompts/` 與 task 內的一次性 prompt 草稿怎麼分
-- `publishes/` 為什麼不是預設 active source-of-truth
+- Should this content live in `_ideas/` or `_todos/`?
+- When should task output be promoted into `docs/`?
+- How should reusable prompts be separated from one-off task prompts?
+- Why is `publishes/` not the default active source of truth?
 
-這些問題在真實 workspace 裡都很實際，所以 `ARCHITECTURE.md` 在這裡不是補充說明，而是結構抽象層。它的工作是把分區模型、內容生命週期與 source-of-truth 邊界講清楚。
+These are practical questions in a real workspace. That is why `ARCHITECTURE.md` is not just supplementary explanation here. It is the structure abstraction layer. Its job is to make the partition model, content lifecycle, and source-of-truth boundaries explicit.
 
-## 什麼時候不是寫進 `docs/`
+## When Something Should Not Go Into `docs/`
 
-很多 repo 的 `docs/` 會變成「不知道放哪裡就先丟進去」的區域，但 `myBrainFood` 刻意避免這件事。
+Many repos let `docs/` become the place where everything unclear gets dumped. `myBrainFood` tries to avoid that.
 
-真實分工是：
+The real division of responsibilities is:
 
-- 若內容仍依賴單一 task 脈絡，先留在 task 區
-- 若內容只是單一 prompt 草稿，先留在任務脈絡，而不是直接升到共用區
-- 若內容主要是工具，應進 `tools/`
-- 只有當內容已成為 repo-level 長期規則、方法論或 workflow，才沉澱到 `docs/`
+- if content still depends on a single task context, keep it with the task
+- if content is only a one-off prompt draft, keep it in the task context instead of promoting it immediately
+- if content is mainly a tool, put it in `tools/`
+- only when content becomes stable repo-level guidance, method, or workflow should it be promoted into `docs/`
 
-這也是為什麼這個 publish repo 沒把 `docs/README.md` 當成最小必備，而是放成 optional template。對第一次打造 agent-friendly repo 的新手來說，先把 root 三件套分工做好，比先長出一個空的 `docs/` 更重要。
+That is why this publish repo does not treat `docs/README.md` as part of the minimum required set. It is provided as an optional template instead. For beginners building their first agent-friendly repo, getting the three root files right matters more than creating an empty `docs/` directory too early.
 
-## 真實案例怎麼幫助理解 starter kit
+## How The Real Example Helps You Understand The Starter Kit
 
-如果你只看模板，很容易把它們當成語句樣板。
+If you only read templates, it is easy to mistake them for wording patterns.
 
-這份 guide 的目的，是把 starter kit 背後的結構判斷綁回真實案例。它想幫你看到：
+The purpose of this guide is to connect the starter kit back to real structural judgments. It is meant to show:
 
-- 為什麼 root `README.md` 與 `AGENTS.md` 不該混成一份 giant instruction file
-- 為什麼 `ARCHITECTURE.md` 應該獨立存在，而不是只當 README 的附錄
-- 為什麼 active context / historical context 的界線能直接降低接手成本
-- 為什麼 `docs/` 與 local guides 應該在 repo 成熟後再出現
+- why root `README.md` and `AGENTS.md` should not collapse into one giant instruction file
+- why `ARCHITECTURE.md` should exist independently instead of acting like an appendix to `README.md`
+- why the boundary between active context and historical context directly lowers handoff cost
+- why `docs/` and deeper local guides should appear after the repo matures, not necessarily on day one
 
-換句話說，這些模板的價值不只是「可以複製」，而是「每一份文件都有明確理由存在」。
+In other words, the value of these templates is not just that they can be copied. It is that each file has a clear reason to exist.
 
-## 這套設計實際能支撐什麼提示詞
+## What Kind Of Prompts This Design Can Support
 
-如果你想快速理解 agent-friendly repo 到底有什麼實際價值，最好的方式不是先讀抽象原則，而是直接看幾種真實提問。
+If you want to understand the practical value of an agent-friendly repo, the best approach is not abstract theory first. Look at the kinds of real prompts the repo should be able to support.
 
-下面這些 prompt，代表 reader 或 agent 在實際工作中很可能會提出的問題。這些問題之所以能被穩定回答，前提就是 repo 已經把入口、source-of-truth、workflow pointer 與 local guide 設計清楚。
+The prompts below represent questions that readers or agents are likely to ask in real work. The reason they can be answered reliably is that the repo has already made its entry points, source-of-truth boundaries, workflow pointers, and local guides explicit.
 
-### 1. 初次進 repo
-
-```text
-你是第一次進入這個 repo。請告訴我這個 repo 是做什麼用的，有哪些主要工作區域，以及我如果要找目前進行中的任務應該去哪裡看。
-```
-
-這個例子在驗證：
-
-- root 入口是否可預測
-- `AGENTS.md` 與 `README.md` 是否分工清楚
-- reader 是否能被正確導向 active context，而不是歷史區或 execution artifacts
-
-### 2. 找目前的權威來源
+### 1. Entering The Repo For The First Time
 
 ```text
-幫我找出這個主題目前的執行狀態與下一步待做事項。
+You are entering this repo for the first time. Tell me what this repo is for, what its main working areas are, and where I should look if I want to find tasks that are currently in progress.
 ```
 
-這個例子在驗證：
+This prompt tests:
 
-- repo 是否有清楚的 active context
-- `archive/` 是否不會被誤當成當前 source-of-truth
-- task 目錄內是否已有足夠的 state artifact 可供接手
+- whether the root entry points are predictable
+- whether `AGENTS.md` and `README.md` have clear separation of responsibility
+- whether the reader is directed toward active context instead of historical areas or execution artifacts
 
-### 3. 只找長期有效規則
+### 2. Finding The Current Source Of Truth
 
 ```text
-幫我整理這個 repo 目前有哪些長期有效的規則與方法論文件，以及它們分別在哪裡。
+Help me find the current execution status of this topic and the next actions that still need to be done.
 ```
 
-這個例子在驗證：
+This prompt tests:
 
-- `docs/` 是否真的承接長期規則
-- execution artifacts 是否能被 lazy access
-- root 文件是否有把 reader 正確導向 `docs/`
+- whether the repo has a clear active context
+- whether `archive/` is not mistaken for the current source of truth
+- whether task directories contain enough state artifacts for handoff
 
-### 4. 進入特定主題工作區
+### 3. Finding Only Long-Lived Rules
 
 ```text
-幫我找出這個 repo 裡關於某個特定工作流的資料，以及目前狀態。
+Summarize the long-lived rules and methods that currently exist in this repo, and tell me where they live.
 ```
 
-這個例子在驗證：
+This prompt tests:
 
-- reader 是否會先從 root 入口找方向
-- 進入子目錄後，是否能跟著 local `README.md` / `AGENTS.md`
-- repo 是否有足夠的次級入口，避免深入後迷路
+- whether `docs/` really carries long-lived rules
+- whether execution artifacts can be handled with lazy access
+- whether the root files point readers to `docs/` correctly
 
-### 5. 判斷哪些規則只是慣例，哪些有強制力
+### 4. Entering A Specific Work Area
 
 ```text
-這個 repo 裡哪些規則是被強制執行的，哪些只是文件治理慣例？
+Help me find the materials in this repo related to a specific workflow, and tell me the current status.
 ```
 
-這個例子在驗證：
+This prompt tests:
 
-- repo 的 guardrail 狀態是否可見
-- 文件是否有把「正式 enforcement」和「治理慣例」分清楚
-- agent 是否能如實回報，而不是自行腦補不存在的機制
+- whether readers start from the root entry points
+- whether they can follow local `README.md` / `AGENTS.md` once they move deeper
+- whether the repo has enough secondary entry points to prevent getting lost
 
-### 6. 接手長任務並留下可恢復狀態
+### 5. Distinguishing Strong Rules From Conventions
 
 ```text
-幫我整理這個月某個主題的執行進度摘要，包含已完成、進行中、待啟動，以及下一步建議。這份摘要需要能被下一次的 session 繼續使用。
+Which rules in this repo are strictly enforced, and which ones are only documentation governance conventions?
 ```
 
-這個例子在驗證：
+This prompt tests:
 
-- repo 是否支援長任務狀態管理
-- task contract 是否足夠清楚
-- agent 是否不只回答問題，還知道把 state 留回正確的 task 位置
+- whether the repo's guardrail state is visible
+- whether the docs separate formal enforcement from governance convention
+- whether an agent can report accurately instead of inventing mechanisms that do not exist
 
-### 7. 跟隨 workflow pointer 執行工作
+### 6. Taking Over A Long Task And Leaving Recoverable State
 
 ```text
-我有一篇新聞連結要分析，請告訴我應該用什麼流程處理，並幫我開始執行。
+Help me summarize the execution progress of a topic this month, including what is done, what is in progress, what has not started, and the recommended next steps. This summary needs to remain usable in the next session.
 ```
 
-這個例子在驗證：
+This prompt tests:
 
-- root `AGENTS.md` 是否真的提供 workflow pointer
-- `docs/` 是否有對應流程文件
-- agent 是否會先找既有流程，而不是每次重新發明做法
+- whether the repo supports long-task state management
+- whether the task contract is clear enough
+- whether an agent knows not only how to answer, but also how to leave state in the correct task location
 
-如果一個 repo 能穩定支撐這些提問，就代表它不只是「有很多說明文件」，而是已經具備可預測入口、可操作的 source-of-truth、可跟隨的流程入口，以及可接續的任務狀態設計。
+### 7. Following A Workflow Pointer To Execute Work
 
-## 如果你想打造自己的簡易版
+```text
+I have a news link to analyze. Tell me which process I should use and help me start executing it.
+```
 
-如果你不想照搬整個 `myBrainFood`，最小可以先採用：
+This prompt tests:
 
-- 一份 root `README.md`
-- 一份 root `AGENTS.md`
-- 一份 root `ARCHITECTURE.md`
+- whether root `AGENTS.md` really provides workflow pointers
+- whether `docs/` contains corresponding workflow files
+- whether an agent follows existing process instead of reinventing the method every time
 
-這三份文件已經足夠建立：
+If a repo can reliably support prompts like these, it is not just a repo with many documents. It has predictable entry points, operable source-of-truth boundaries, actionable workflow entry points, and recoverable task state.
+
+## If You Want To Build A Simpler Version Of Your Own
+
+If you do not want to copy the whole `myBrainFood` workspace, the minimum set you can start with is:
+
+- a root `README.md`
+- a root `AGENTS.md`
+- a root `ARCHITECTURE.md`
+
+These three files are already enough to establish:
 
 - overview
 - navigation
 - structure and source-of-truth rules
 
-之後再依你的 repo 成長情況，補上：
+Then, as your repo grows, you can add:
 
 - `docs/`
 - `docs/README.md`
@@ -227,24 +227,26 @@
 - workflow docs
 - task contracts
 
-這也是這個 publish repo 裡 `templates/` 的定位：不是把 `myBrainFood` 全部複製出去，而是提供一組讓新手能先動手做出簡易版的 starter kit。
+That is the role of `templates/` in this publish repo: not to replicate all of `myBrainFood`, but to provide a starter kit that helps beginners build a simpler version first.
 
-## 建議閱讀順序
+## Suggested Reading Order
 
-如果你想真正用這個 repo 開始動手，建議這樣讀：
+If you want to actually start using this repo, I recommend this reading order:
 
-1. 先讀這份 guide，理解真實案例與設計理由
-2. 再看 `templates/ROOT-README.md`
-3. 再看 `templates/AGENTS.md`
-4. 再看 `templates/ARCHITECTURE.md`
-5. 若你的 repo 已開始累積穩定 workflow，再看 `templates/docs-README.optional.md`
+1. Read this guide first to understand the real example and the reasons behind the design
+2. Then read `templates/ROOT-README.md`
+3. Then read `templates/AGENTS.md`
+4. Then read `templates/ARCHITECTURE.md`
+5. If your repo has already started accumulating stable workflows, then read `templates/docs-README.optional.md`
 
-## 這份 publish guide 的核心主張
+## The Core Claim Of This Publish Guide
 
-這個 repo 想分享的，不是「我有幾個模板檔」，而是：
+What this repo wants to share is not just “I have a few template files.”
 
-- 一個 agent-friendly repo 應該先把入口與邊界講清楚
-- 最小可行版本不需要一開始就複製整個複雜 workspace
-- 真正有用的模板，應該能回到真實 workspace 中解釋自己為什麼存在
+It is this:
 
-先有真實案例，再有 starter kit；這就是這個 publish repo 的核心設計。
+- an agent-friendly repo should make its entry points and boundaries explicit first
+- the minimum viable version does not need to replicate an entire complex workspace from day one
+- useful templates should be explainable by the real workspace conditions that produced them
+
+First comes the real example, then the starter kit. That is the core design of this publish repo.
