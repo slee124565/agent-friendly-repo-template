@@ -32,6 +32,7 @@ If you want to start building right away:
 2. Rename `templates/ROOT-README.md` to `README.md`
 3. Adapt the placeholder directory names to your own workspace
 4. Add the optional `docs/README.md` template only when your repo starts needing stable workflow documentation
+5. Add the optional `docs/archive-release-policy.md` template when completed-task history starts interfering with active workspace navigation
 
 ## 5-Minute Setup
 
@@ -47,7 +48,8 @@ If you want to start building right away:
    `AGENTS.md` for navigation,
    `ARCHITECTURE.md` for structure and source-of-truth rules.
 6. Add `docs/` and `docs/README.md` only when your repo starts accumulating stable workflows or methods.
-7. Add deeper local guides only after the root files are clear.
+7. Add `docs/archive-release-policy.md` when completed-task history should become thin in-repo pointers plus GitHub release snapshots instead of full historical trees.
+8. Add deeper local guides only after the root files are clear.
 
 ## Why This Exists
 
@@ -68,6 +70,8 @@ This publish repo shares that learning in a form that others can actually reuse:
   The structure and source-of-truth file for boundary decisions
 - `templates/docs-README.optional.md`
   An optional local guide for `docs/` once your repo needs a stable documentation area
+- `templates/archive-release-policy.optional.md`
+  An optional archive policy when completed-task history should move to release snapshots instead of staying as full in-repo trees
 
 ## Optional Extension: `docs/`
 
@@ -87,6 +91,15 @@ If you do add `docs/`, also add `docs/README.md` as a local guide for that direc
 - where readers should start when `docs/` grows
 
 In other words, `docs/README.md` is not a duplicate of the root `README.md`. It is a boundary and navigation file for `docs/` itself. This repository includes `templates/docs-README.optional.md` for that upgrade step.
+
+## Optional Extension: Completed-Task Archive Policy
+
+If your repository starts accumulating completed tasks, a full in-repo historical tree may become noisy for agents. In repositories that already rely on git and GitHub for version history, a better pattern is often:
+
+- keep a thin `archive/completed-tasks/` index in the main workspace
+- move the full completed-task history to a Git tag + GitHub release asset
+
+This repository includes `templates/archive-release-policy.optional.md` for that upgrade step.
 
 ## License
 

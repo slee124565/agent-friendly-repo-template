@@ -36,5 +36,6 @@ This template belongs to the starter kit of this publish repo. Its job is to hel
 - Root `AGENTS.md` is the shared entry point; deeper guides own the details.
 - Trust local `README.md` / `AGENTS.md` over filename guesses.
 - `[active-dir]/` is active context by default; `[history-dir]/` is historical context by default.
+- If you keep `archive/completed-tasks/`, explicitly say whether it is a full historical tree or only an index; if full snapshots live in GitHub releases, say that directly.
 - `docs/` should gradually become the stable home for repo-level rules and methods.
 ```

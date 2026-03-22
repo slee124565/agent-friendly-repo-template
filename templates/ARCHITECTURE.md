@@ -51,6 +51,11 @@ It focuses on:
 2. Use `ARCHITECTURE.md` to resolve boundary questions.
 3. Once inside a directory, follow local guides.
 
+If your repo has `archive/completed-tasks/`, make it explicit whether it is:
+
+- a full historical tree
+- or a thin index that points to release snapshots outside the main workspace
+
 ## Promotion Rules
 
 ### `[dir-a]` to `[dir-b]`
@@ -60,4 +65,12 @@ Promote content when:
 - [condition 1]
 - [condition 2]
 - [condition 3]
+
+### `[active-dir]` to `archive/`
+
+When a task is completed and no longer belongs to current work:
+
+1. Move the long-term result into `tools/`, `docs/`, an output area, or another stable location.
+2. Package the full task tree as a release snapshot.
+3. Keep only an index or pointer in `archive/completed-tasks/`.
 ```

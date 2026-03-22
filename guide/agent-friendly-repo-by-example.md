@@ -43,7 +43,7 @@ If you think of `myBrainFood` as a working system rather than a file bucket, sev
 - `_todos/`
   Holds active context: tasks, research, and planning that are currently in progress
 - `archive/`
-  Preserves completed or retired work that is still worth revisiting
+  Preserves completed or retired work that is still worth revisiting; in `myBrainFood`, completed tasks now default to thin in-repo pointers plus GitHub release snapshots instead of full historical trees
 - `docs/`
   Stores stable rules, methods, and workflows
 - `prompts/`
@@ -71,6 +71,8 @@ The clearest example is:
 
 - `_todos/` is active context
 - `archive/` is historical context
+
+For completed tasks, `myBrainFood` goes one step further: the main workspace keeps only a thin pointer, while the full historical tree lives in a Git tag + GitHub release snapshot. That reduces collisions between historical material and active tools or prompts.
 
 This distinction is not just a slogan. It directly affects how handoff and re-entry work. If you need to know what is happening now, you should start from active context, not from archive or execution artifacts.
 
@@ -109,6 +111,7 @@ The purpose of this guide is to connect the starter kit back to real structural 
 - why root `README.md` and `AGENTS.md` should not collapse into one giant instruction file
 - why `ARCHITECTURE.md` should exist independently instead of acting like an appendix to `README.md`
 - why the boundary between active context and historical context directly lowers handoff cost
+- why completed-task history does not always need to remain as a full searchable tree inside the main workspace
 - why `docs/` and deeper local guides should appear after the repo matures, not necessarily on day one
 
 In other words, the value of these templates is not just that they can be copied. It is that each file has a clear reason to exist.
@@ -223,6 +226,7 @@ Then, as your repo grows, you can add:
 
 - `docs/`
 - `docs/README.md`
+- `docs/archive-release-policy.md`
 - deeper local guides
 - workflow docs
 - task contracts
@@ -238,6 +242,7 @@ If you want to actually start using this repo, I recommend this reading order:
 3. Then read `templates/AGENTS.md`
 4. Then read `templates/ARCHITECTURE.md`
 5. If your repo has already started accumulating stable workflows, then read `templates/docs-README.optional.md`
+6. If completed-task history is starting to interfere with active navigation, then read `templates/archive-release-policy.optional.md`
 
 ## The Core Claim Of This Publish Guide
 

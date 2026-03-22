@@ -43,7 +43,7 @@
 - `_todos/`
   承接 active context，也就是目前正在推進的任務、研究與規劃
 - `archive/`
-  保存已完成、已退役但仍值得回看的歷史任務
+  保存已完成、已退役但仍值得回看的歷史任務；在 `myBrainFood` 裡，completed task 現在預設改成 repo 內 thin pointer + GitHub release snapshot，而不是保留完整 historical tree
 - `docs/`
   沉澱穩定規則、方法論與 workflow
 - `prompts/`
@@ -71,6 +71,8 @@
 
 - `_todos/` 是 active context
 - `archive/` 是 historical context
+
+對 completed task，`myBrainFood` 又再往前走一步：主 workspace 只保留 thin pointer，完整歷史樹改由 Git tag + GitHub release snapshot 承擔。這能降低 historical materials 和 active tool / prompt 發生關鍵字碰撞的機率。
 
 這個判斷不是口號，而是直接影響接手與 re-entry 的真實閱讀順序。若你要知道「現在正在做什麼」，應該先看 active context，而不是先翻 archive 或執行產物。
 
@@ -109,6 +111,7 @@
 - 為什麼 root `README.md` 與 `AGENTS.md` 不該混成一份 giant instruction file
 - 為什麼 `ARCHITECTURE.md` 應該獨立存在，而不是只當 README 的附錄
 - 為什麼 active context / historical context 的界線能直接降低接手成本
+- 為什麼 completed task 的歷史不一定要繼續以完整可搜尋樹留在主 workspace
 - 為什麼 `docs/` 與 local guides 應該在 repo 成熟後再出現
 
 換句話說，這些模板的價值不只是「可以複製」，而是「每一份文件都有明確理由存在」。
@@ -223,6 +226,7 @@
 
 - `docs/`
 - `docs/README.md`
+- `docs/archive-release-policy.md`
 - deeper local guides
 - workflow docs
 - task contracts
@@ -238,6 +242,7 @@
 3. 再看 `templates/AGENTS.md`
 4. 再看 `templates/ARCHITECTURE.md`
 5. 若你的 repo 已開始累積穩定 workflow，再看 `templates/docs-README.optional.md`
+6. 若 completed task 的歷史已開始干擾 active 導航，再看 `templates/archive-release-policy.optional.md`
 
 ## 這份 publish guide 的核心主張
 

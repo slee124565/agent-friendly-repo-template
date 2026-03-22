@@ -45,5 +45,12 @@ This template belongs to the starter kit of this publish repo. Its job is to hel
 - [Content type B]: store in `[dir-b]/`
 - Stable repository guidance: store in `docs/`
 
+## Structure Notes
+
+- `docs/README.md`
+  Repository-level workflow and methods guide
+- `docs/archive-release-policy.md`
+  Optional completed-task archive strategy when history should move to release snapshots
+
 See `ARCHITECTURE.md` for lifecycle rules and source-of-truth boundaries.
 ```

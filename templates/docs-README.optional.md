@@ -33,6 +33,10 @@ Do not put these here first:
 
 Stores [the role of this subdirectory].
 
+### `archive-release-policy.md`
+
+Stores the completed-task archive strategy when your repo uses thin in-repo indexes plus release snapshots.
+
 ## Reading Order
 
 1. Read `docs/README.md`.
